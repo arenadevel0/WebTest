@@ -1,0 +1,8 @@
+Apr 12, 2017 5:05:44 PM resear.logger.UseLogger doSomeThingAndLog
+SEVERE: Info Log
+Apr 12, 2017 5:05:44 PM resear.logger.UseLogger doSomeThingAndLog
+SEVERE: Info Log
+Apr 12, 2017 5:05:44 PM resear.logger.UseLogger doSomeThingAndLog
+WARNING: Info Log
+Apr 12, 2017 5:05:44 PM resear.logger.UseLogger doSomeThingAndLog
+INFO: Info Log
