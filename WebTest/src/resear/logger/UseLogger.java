@@ -15,11 +15,16 @@ public class UseLogger {
             LOGGER.info("Info Log");
             LOGGER.finest("Really not important");
 
-            LOGGER.setLevel(Level.INFO);
+            LOGGER.setLevel(Level.FINER);
             LOGGER.severe("Info Log");
             LOGGER.warning("Info Log");
             LOGGER.info("Info Log");
             LOGGER.finest("Really not important");
+            
+            for(int i=0; i<Short.MAX_VALUE; i++){
+            	LOGGER.log(Level.INFO, i+": log generated");
+            	System.out.println(i+": log generated");
+            }
     }
 
     public static void main(String[] args) {
