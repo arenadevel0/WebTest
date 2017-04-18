@@ -11,13 +11,13 @@ import java.util.logging.SimpleFormatter;
 
 public class MyLogger {
 	
-	static private FileHandler fileTxt;
-    static private SimpleFormatter formatterTxt;
+	private static FileHandler fileTxt;
+	private static SimpleFormatter formatterTxt;
 
-    static private FileHandler fileHTML;
-    static private Formatter formatterHTML;
+	private static FileHandler fileHTML;
+	private static Formatter formatterHTML;
 
-    static public void setup() throws IOException {
+	public static void setup() throws IOException {
 
             Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 

@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 public class UseLogger {
 	
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+	private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public void doSomeThingAndLog() {
             LOGGER.setLevel(Level.SEVERE);
