@@ -22,10 +22,12 @@ public class MyLogger {
             Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
             Logger rootLogger = Logger.getLogger("");
-            Handler[] handlers = rootLogger.getHandlers();
+            
+            //to stop logging on console
+           /* Handler[] handlers = rootLogger.getHandlers();
             if (handlers[0] instanceof ConsoleHandler) {
                     rootLogger.removeHandler(handlers[0]);
-            }
+            }*/
 
             logger.setLevel(Level.SEVERE);
             fileTxt = new FileHandler("Logging.txt");

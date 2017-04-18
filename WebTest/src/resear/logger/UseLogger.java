@@ -23,7 +23,7 @@ public class UseLogger {
             
             for(int i=0; i<Short.MAX_VALUE; i++){
             	LOGGER.log(Level.INFO, i+": log generated");
-            	System.out.println(i+": log generated");
+//            	System.out.println(i+": log generated");
             }
     }
 
