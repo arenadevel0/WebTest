@@ -21,10 +21,9 @@ public class MyLogger {
 
             Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
-            Logger rootLogger = Logger.getLogger("");
-            
             //to stop logging on console
-           /* Handler[] handlers = rootLogger.getHandlers();
+            /*Logger rootLogger = Logger.getLogger("");
+            Handler[] handlers = rootLogger.getHandlers();
             if (handlers[0] instanceof ConsoleHandler) {
                     rootLogger.removeHandler(handlers[0]);
             }*/
