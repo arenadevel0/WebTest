@@ -5,7 +5,7 @@ import java.io.*;
 
 class SizedLog {
 	private static final String LOGGED_LOCATION = "D:\\Logs\\";
-	private static final String SIZEDLOG = "sizedLog.log";
+	private static final String SIZEDLOG = "sizedLog%g.log";
 	static Logger logger = Logger.getLogger(SizedLog.class.getName());
 	static FileHandler fh;
 	
@@ -29,12 +29,12 @@ class SizedLog {
 	public void doWork(){
 		// logger.entering(this.getClass().getName(), "doWork()");
 		// logger.info("LOGGING_START");
-		for(int i=0; i<Byte.MAX_VALUE; i++){
-			try {
+		for(int i=0; i<Short.MAX_VALUE*10; i++){
+			/*try {
 				Thread.sleep(150);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
+			}*/
 			logger.info("logger: "+i);
 		}
 		// logger.info("LOGGING_END");
