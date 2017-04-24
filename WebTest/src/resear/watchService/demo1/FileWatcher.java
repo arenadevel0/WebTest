@@ -46,7 +46,7 @@ class FileWatcher {
 	}
 
 	public void doWatchOverFile(){
-		final Path path = Paths.get("D:\\Logs\\Log.txt");
+		final Path path = Paths.get("D:\\Logs");
 		System.out.println("file to be watched: "+path);
 		try (final WatchService watchService = FileSystems.getDefault().newWatchService()) {
 		    final WatchKey watchKey = path.register(watchService, StandardWatchEventKinds.ENTRY_MODIFY);
