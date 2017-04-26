@@ -15,14 +15,14 @@ import java.nio.file.WatchService;
 /*
  * This program demonstrates how to use the Watch Service API to monitor change
  * events for a specific directory.
- * Hi am I working.
+ * Hi am I working
  */
 public class DirectoryWatchDemo {
  
     public static void main(String[] args) {
         try {
             WatchService watcher = FileSystems.getDefault().newWatchService();
-            Path dir = Paths.get("D:\\PERSONAL_DATA\\luna@data\\git\\WebTest\\WebTest\\src\\resear\\watchService\\demo1");
+            Path dir = Paths.get("D:\\PERSONAL_DATA\\luna@data\\git\\WebTest\\WebTest\\src\\resear\\watchService\\demo2");
             dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
              
             System.out.println("Watch Service registered for dir: " + dir.getFileName());
@@ -32,7 +32,6 @@ public class DirectoryWatchDemo {
                 try {
                     key = watcher.take();
                 } catch (InterruptedException ex) {
-             
                 	return;
                 }
                  
