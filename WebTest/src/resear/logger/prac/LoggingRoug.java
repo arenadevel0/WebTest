@@ -5,6 +5,8 @@ import java.io.IOException;
 
 public class LoggingRoug {
 
+	/*testing from win8*/
+	
 	static Logger logger = Logger.getLogger(LoggingRoug.class.getName());
 	static String c="LoggingRough";
 	public static void main(String[] args) throws IOException{
