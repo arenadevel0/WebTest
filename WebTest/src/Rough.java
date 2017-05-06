@@ -3,7 +3,7 @@ import java.lang.reflect.Modifier;
 import java.util.regex.Pattern;
 
 
-public class Main{
+public class Rough{
 	private int i;
 	private String name;
 	
@@ -24,11 +24,11 @@ public class Main{
 	}
 
 	private static String regis(){
-		return "Class name: "+Main.class.getName();
+		return "Class name: "+Rough.class.getName();
 	}
 	
 	public String getClassName(){
-		return Main.regis();
+		return Rough.regis();
 	}
 	public static void main(String[] args) {
 		String eol = System.lineSeparator();
@@ -59,7 +59,7 @@ public class Main{
 	}
 
 	private static void doMethodThing() {
-		for(Method meth: Main.class.getDeclaredMethods()){
+		for(Method meth: Rough.class.getDeclaredMethods()){
 			System.out.println(Modifier.toString(meth.getModifiers())+" "+meth.getReturnType()+" "+meth.getName());
 		}
 	}
