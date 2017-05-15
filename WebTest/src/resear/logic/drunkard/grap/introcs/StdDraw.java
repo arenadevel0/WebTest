@@ -1,4 +1,4 @@
-package resear.logic.drunkard.grap;
+package resear.logic.drunkard.grap.introcs;
 
 /******************************************************************************
  *  Compilation:  javac StdDraw.java

@@ -1,4 +1,4 @@
-package resear.logic.drunkard.grap;
+package resear.logic.drunkard.grap.introcs;
 
 /******************************************************************************
  *  Compilation:  javac RandomWalk.java
@@ -25,16 +25,16 @@ package resear.logic.drunkard.grap;
 public class RandomWalk { 
 
     public static void main(String[] args) {
-        int n = 5;
+        int n = 600;
         StdDraw.setXscale(-n, +n);
         StdDraw.setYscale(-n, +n);
-        StdDraw.clear(StdDraw.GRAY);
+        StdDraw.clear(StdDraw.WHITE);
         StdDraw.enableDoubleBuffering();
 
         int x = 0, y = 0;
         int steps = 0;
         while (Math.abs(x) < n && Math.abs(y) < n) {
-            StdDraw.setPenColor(StdDraw.WHITE);
+            StdDraw.setPenColor(StdDraw.BOOK_BLUE);
             StdDraw.filledSquare(x, y, 0.45);
             double r = Math.random();
             if      (r < 0.25) x--;
