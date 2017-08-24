@@ -6,6 +6,8 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jco"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache commons 1.10"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache commons codec 1.10"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache commons io 2.5"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
