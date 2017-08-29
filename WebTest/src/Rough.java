@@ -1,11 +1,8 @@
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.security.Key;
@@ -163,14 +160,34 @@ public class Rough{
 		readSncConfigComplete();
 		System.out.println("Full SNC.config reading done!!!\n\n");
 		readSncConfig();*/
+		int toleranceCounter=0;
+		for(int i=0; i<i+1; i++){		
+			String strin = Rough.getRoughObj().getPathToSomeotherLocation(i);
+			if(strin.contains("doesn't exist")){
+				toleranceCounter++;
+			}
+			if(toleranceCounter>7){
+				strin = "told u asshole many times already, that directory doesn't exits still...";
+			}
+			System.out.println("Directory up by "+i+" : "+strin);
+			if(toleranceCounter>7){
+				System.err.println("Keeda hai kya?????");
+				return;
+			}
+		}
 		
-		System.out.println(new File(Rough.getRoughObj().getPathToSomeotherLocation()));
 		
 	}
 	
-	private String getPathToSomeotherLocation(){
-		return this.getClass().getResource("").getPath().toString();
-//		return System.getProperty("user.dir");
+	private String getPathToSomeotherLocation(int directoryUp){
+		File currentPath= new File(this.getClass().getResource("").getPath().toString());
+		for(int i=0; i<directoryUp; i++){
+			if(currentPath.getParent()!=null)
+				currentPath=new File(currentPath.getParent());
+			else
+				return "directory above "+directoryUp+" doesn't exist..";
+		}
+		return currentPath.getAbsolutePath();
 	}
 
 	
