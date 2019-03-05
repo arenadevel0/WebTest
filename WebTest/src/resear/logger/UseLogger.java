@@ -9,19 +9,21 @@ public class UseLogger {
 	private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public void doSomeThingAndLog() {
-            LOGGER.setLevel(Level.SEVERE);
-            LOGGER.severe("Info Log");
-            LOGGER.warning("Info Log");
+    	//Now only logs with higher or equal level than WARNING will appear 
+            LOGGER.setLevel(Level.WARNING);
+            LOGGER.severe("Severe Log");
+            LOGGER.warning("Warning Log");
             LOGGER.info("Info Log");
-            LOGGER.finest("Really not important");
+            LOGGER.finest("Finest log");
 
-            LOGGER.setLevel(Level.FINER);
-            LOGGER.severe("Info Log");
-            LOGGER.warning("Info Log");
+        //Now only logs with higher or equal level than INFO will appear 
+            LOGGER.setLevel(Level.INFO);
+            LOGGER.severe("Severe Log");
+            LOGGER.warning("Warning Log");
             LOGGER.info("Info Log");
-            LOGGER.finest("Really not important");
+            LOGGER.finest("Finest log");
             
-            for(int i=0; i<Short.MAX_VALUE; i++){
+            for(int i=0; i<Byte.MAX_VALUE; i++){
             	LOGGER.log(Level.INFO, i+": log generated");
 //            	System.out.println(i+": log generated");
             }

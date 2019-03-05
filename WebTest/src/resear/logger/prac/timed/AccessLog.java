@@ -1,13 +1,17 @@
 package resear.logger.prac.timed;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 import resear.utils.SleepingCurrentThread;
 import resear.utils.Viewer;
+/**
+ * 
+ * Provide environment variable DS_IDOCSVR_LOG_BUFFER_SIZE with integer value before running this
+ * 
+ **/
 
 public class AccessLog {
 	
