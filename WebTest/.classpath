@@ -9,5 +9,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache commons 1.10"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache commons codec 1.10"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache commons io 2.5"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/eclipse libraries"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/java assist"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache coded 1.10"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
