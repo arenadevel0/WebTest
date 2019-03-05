@@ -1,17 +1,26 @@
+import java.awt.Desktop;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.Key;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.regex.Pattern;
 
 import javax.crypto.Cipher;
@@ -57,6 +66,44 @@ public class Rough{
 	
 	public static void main(String[] args) {
 		
+		//&&
+		System.out.println(true && true);
+		System.out.println(true && false);
+		System.out.println(false && true);
+		System.out.println(false && false);
+		
+		//&
+		System.out.println(true & true);
+		System.out.println(true & false);
+		System.out.println(false & true);
+		System.out.println(false & false);
+		
+		//||
+		System.out.println(true || true);
+		System.out.println(true || false);
+		System.out.println(false || true);
+		System.out.println(false || false);
+		
+		//|
+		System.out.println(true | true);
+		System.out.println(true | false);
+		System.out.println(false | true);
+		System.out.println(false | false);
+		
+		/*null pointer exception check*/
+		Object o = null;		//NullPointerException
+//		Object o = null;
+//		Object o = System.getenv("path");
+//		Object o = System.getenv("path1");
+		String path = (String) o;
+		System.out.println("path: "+path);
+		/*null pointer exception check*/
+		
+		checkLoggingGranuality();
+		
+		
+		System.out.println(fibonacci(7));
+		//create an environment variable before this named "amigo_eclipse"
 		System.out.println("amigo_eclipse: "+System.getenv("amigo_eclipse"));
 		String eol = System.lineSeparator();
 		doMethodThing();
@@ -88,7 +135,7 @@ public class Rough{
 		}
 		
 		try {
-			File fileScannerRead = new File("C:\\Users\\nitish.kholiya\\Desktop\\AUTO START Linux DB2.txt");
+			File fileScannerRead = new File(System.getProperty("user.dir")+File.separator+"resource"+File.separator+"AUTO START Linux DB2.txt");
 			if(fileScannerRead.exists())
 				System.out.println(new Scanner(fileScannerRead).useDelimiter("\\A").next());
 			
@@ -130,6 +177,7 @@ public class Rough{
 		
 		System.out.println("---------");		
 		System.out.println("numDecodings:  "+numDecodings("101"));
+		//alter path accordingly
 		System.out.println("endsWith: "+"C:\\SNC\\dsadm\\ER0\\IBMDDADM.cRt".trim().toLowerCase().endsWith(" ".trim().toLowerCase()));
 		
 		
@@ -156,6 +204,156 @@ public class Rough{
 			readSncConfigAndprovideRespectiveMap(str);
 		}
 		
+
+		String o1 = "Nitish";
+		String o2 = new String("Kholiya");
+		System.out.println(new Rough().hi1(o1, o2));
+		
+		//FileWriter performance
+		
+		//alter path accordingly
+		File fileWriterFile = new File("C:\\Users\\nitish.kholiya\\Desktop\\PerformanceCheck\\FileWriter");
+
+		try {
+			if(!fileWriterFile.exists()){
+				fileWriterFile.mkdirs();
+			}
+			//alter path accordingly
+			fileWriterFile = new File("C:\\Users\\nitish.kholiya\\Desktop\\PerformanceCheck\\FileWriter\\FileWriterPerformanceWithoutThread.txt");
+			if(!fileWriterFile.exists()){
+				fileWriterFile.createNewFile();
+			}
+			FileWriter fileWriterObj = new FileWriter(fileWriterFile);
+			fileWriterObj.write("Performace check for FileWriter without Thread:    "+eol);
+			Long startTime = System.currentTimeMillis();
+			for(int i=0; i<9999999; i++){
+				fileWriterObj.write("i: "+i+eol);
+			}
+			Long endTime = System.currentTimeMillis();
+			fileWriterObj.write("Time taken to write into this file : "+(endTime-startTime)+"millis"+eol);
+			fileWriterObj.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+		
+		
+		
+		//BufferedWriter performance
+		//alter path accordingly
+		File bufferedWriterFile = new File("C:\\Users\\nitish.kholiya\\Desktop\\PerformanceCheck\\BufferedWriter");
+		try {
+			if(!bufferedWriterFile.exists()){
+				bufferedWriterFile.mkdirs();
+			}
+			//alter path accordingly
+			bufferedWriterFile = new File("C:\\Users\\nitish.kholiya\\Desktop\\PerformanceCheck\\BufferedWriter\\BufferefdfWriterPerformanceWithoutThread.txt");
+			if(!bufferedWriterFile.exists()){
+				bufferedWriterFile.createNewFile();
+			}
+			Writer writer = new FileWriter(bufferedWriterFile);
+			BufferedWriter bufferedWriterObj = new BufferedWriter(writer);
+			bufferedWriterObj.write("Performace check for BufferedWriter without Thread:    "+eol);
+			Long startTime = System.currentTimeMillis();
+			for(int i=0; i<9999999; i++){
+				bufferedWriterObj.write("i: "+i+eol);
+			}
+			Long endTime = System.currentTimeMillis();
+			bufferedWriterObj.write("Time taken to write into this file : "+(endTime-startTime)+"millis"+eol);
+			bufferedWriterObj.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+
+		
+		
+		try {
+			Desktop.getDesktop().open(fileWriterFile);
+			Desktop.getDesktop().open(bufferedWriterFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		//FileWriter performance with Thread
+		
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+
+					String eol = System.getProperty("line.separator");
+					//alter path accordingly
+					File fileWriterFile = new File("C:\\Users\\nitish.kholiya\\Desktop\\PerformanceCheck\\FileWriter\\FileWriterPerformanceWithThread.txt");
+					if(!fileWriterFile.exists()){
+						fileWriterFile.createNewFile();
+					}
+					FileWriter fileWriterObj = new FileWriter(fileWriterFile);
+					fileWriterObj.write("Performace check for FileWriter with Thread:    "+eol);
+					Long startTime = System.currentTimeMillis();
+					for(int i=0; i<9999999; i++){
+						fileWriterObj.write("i: "+i+eol);
+					}
+					Long endTime = System.currentTimeMillis();
+					fileWriterObj.write("Time taken to write into this file : "+(endTime-startTime)+"millis"+eol);
+					fileWriterObj.close();
+					Desktop.getDesktop().open(fileWriterFile);
+				} catch (IOException e) {
+					e.printStackTrace();
+				} 
+			}
+		}).start();;
+		
+		
+		//BufferedWriter performance with Thread
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+
+					String eol = System.getProperty("line.separator");
+					//alter path accordingly
+					File bufferedWriterFile = new File("C:\\Users\\nitish.kholiya\\Desktop\\PerformanceCheck\\BufferedWriter\\BufferefdfWriterPerformanceWithThread.txt");
+					if(!bufferedWriterFile.exists()){
+						bufferedWriterFile.createNewFile();
+					}
+					Writer writer = new FileWriter(bufferedWriterFile);
+					BufferedWriter bufferedWriterObj = new BufferedWriter(writer);
+					bufferedWriterObj.write("Performace check for BufferedWriter with Thread:    "+eol);
+					Long startTime = System.currentTimeMillis();
+					for(int i=0; i<9999999; i++){
+						bufferedWriterObj.write("i: "+i+eol);
+					}
+					Long endTime = System.currentTimeMillis();
+					bufferedWriterObj.write("Time taken to write into this file : "+(endTime-startTime)+"millis"+eol);
+					bufferedWriterObj.close();
+					
+					Desktop.getDesktop().open(bufferedWriterFile);
+				} catch (IOException e) {
+					e.printStackTrace();
+				} 
+			}
+		}).start();
+		
+		System.out.print("press a key: ");
+		try {
+			System.out.print(System.in.read());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("formattedMessage: "+ new MessageFormat("Hello Mr.{0}, How are you Today?").format(new Object[]{}));
+		
+		Path p = Paths.get("C:\\");
+		System.out.println(p.toString()+" exists: "+Files.exists(p));
+		p = Paths.get(p.toString(), "HI.txt");
+		try{
+			Files.createFile(p);	
+		} catch (IOException e) {
+			System.out.println(e.getLocalizedMessage());
+		}
 		/*System.out.println("\n\nComplete SNC.config: ");
 		readSncConfigComplete();
 		System.out.println("Full SNC.config reading done!!!\n\n");
@@ -177,6 +375,24 @@ public class Rough{
 		}
 		
 		
+	}
+
+	public static void checkLoggingGranuality() {
+		Level[] logValue = {Level.ALL, Level.CONFIG, Level.FINE, Level.FINER, Level.FINEST, Level.INFO, Level.OFF, Level.SEVERE, Level.WARNING};
+		
+		for(int current=0; current<logValue.length; current++){
+			for(int next=current; next<logValue.length; next++){
+				if(logValue[current].intValue()>logValue[next].intValue()){
+					Level Swap = logValue[current];
+					logValue[current] = logValue[next];
+					logValue[next] = Swap;
+				}
+			}
+		}
+		
+		for (Level level : logValue) {
+			System.out.println(level + ": " + level.intValue());
+		}
 	}
 	
 	private String getPathToSomeotherLocation(int directoryUp){
@@ -230,7 +446,7 @@ public class Rough{
 	}
 	
 	private static void readSncConfig() {
-		try(BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\nitish.kholiya\\Desktop\\SNC.config"));){
+		try(BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir")+File.separator+"resource"+File.separator+"SNC.config"));){
 			List<Map<String,String>> list = new ArrayList<Map<String, String>>();
 			Map<String, String> map = null;
 			String strLine;
@@ -269,7 +485,7 @@ public class Rough{
 	
 	private static void readSncConfigComplete() {
 		try{
-			BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\nitish.kholiya\\Desktop\\SNC.config"));
+			BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir")+File.separator+"resource"+File.separator+"SNC.config"));
 			String strLine;
 			while ((strLine = br.readLine()) != null){
 				System.out.println (strLine);
@@ -331,6 +547,40 @@ public class Rough{
         }
         return ways[n];
     }
+	
+	
+	//1st preference
+	private String hi1(String o1, String o2){
+		return "Calling ... private String hi1(String o1, String o2)";
+	}
+	
+	//2nd preference
+	private String hi1(String o1, Object o2){
+		return "Calling ... private String hi1(String o1, Object o2)";
+	}
+	
+	//3rd preference
+	private String hi1(Object o1, String o2){
+		return "Calling ... private String hi1(Object o1, String o2)";
+	}
+	
+	//4th preference
+	private String hi1(Object o1, Object o2){
+		return "Calling ... private String hi1(Object o1, Object o2)";
+	}
+	
+	
+	private static int fibonacci(int n){
+		if(n==0){
+			return 0;
+		}
+		if(n==1){
+			return 1;
+		}
+		return fibonacci(n-1)+fibonacci(n-2);
+	}
+	
+	
 }
 
 class GrandParent{
