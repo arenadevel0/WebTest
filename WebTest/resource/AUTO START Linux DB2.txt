@@ -1,0 +1,18 @@
+AUTO START
+
+
+DB2 services up for Linux server
+ 
+[root@DELVM05S12 /]# su - db2inst1
+Last login: Wed Feb  1 18:30:48 IST 2017 on pts/2
+-sh-4.2$ ls
+db2inst1  sqllib
+-sh-4.2$ . ./sqllib/db2profile
+-sh-4.2$ cd
+-sh-4.2$ pwd
+/home/db2inst1
+-sh-4.2$ . ./sqllib/db2profile
+-sh-4.2$ db2start
+03/02/2017 13:28:41     0   0   SQL1063N  DB2START processing was successful.
+SQL1063N  DB2START processing was successful.
+-sh-4.2$
